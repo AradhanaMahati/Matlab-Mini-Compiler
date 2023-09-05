@@ -1,0 +1,1935 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> main
+Rule 1     main -> program
+Rule 2     program -> Declaration program
+Rule 3     program -> Fprintf program
+Rule 4     program -> For program End
+Rule 5     program -> While program End
+Rule 6     program -> If program End
+Rule 7     program -> <empty>
+Rule 8     Operator -> EQUALS
+Rule 9     Operator -> NOTEQUALS
+Rule 10    Operator -> GREATER_THAN_OR_EQUAL_TO
+Rule 11    Operator -> LESSER_THAN_OR_EQUAL_TO
+Rule 12    Operator -> GREATER_THAN
+Rule 13    Operator -> LESSER_THAN
+Rule 14    Operator -> AND
+Rule 15    Operator -> OR
+Rule 16    Operator -> PLUS
+Rule 17    Operator -> MINUS
+Rule 18    Operator -> MULTIPLY
+Rule 19    Operator -> DIVIDE
+Rule 20    Operator -> POW
+Rule 21    Declaration -> ID ASSIGN exp SEMICOLON
+Rule 22    exp -> exp Operator exp
+Rule 23    exp -> L_BRACES exp R_BRACES
+Rule 24    exp -> Operand
+Rule 25    exp -> NOT exp
+Rule 26    forCondition -> ID ASSIGN NUMBER COLON NUMBER COLON NUMBER
+Rule 27    forCondition -> ID ASSIGN NUMBER COLON NUMBER
+Rule 28    array -> SQR_LBRACE vector SQR_RBRACE
+Rule 29    vector -> rowvector
+Rule 30    vector -> colvector
+Rule 31    rowvector -> Operand COMMA rowvector
+Rule 32    rowvector -> Operand
+Rule 33    colvector -> Operand SEMICOLON colvector
+Rule 34    colvector -> Operand
+Rule 35    End -> end
+Rule 36    If -> if checkCondition program Block
+Rule 37    Block -> elseif checkCondition program else program
+Rule 38    Block -> else program
+Rule 39    Block -> elseif checkCondition program Block
+Rule 40    Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+Rule 41    Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+Rule 42    content -> ID content
+Rule 43    content -> PLACEHOLDER content
+Rule 44    content -> <empty>
+Rule 45    For -> for L_BRACES forCondition R_BRACES program
+Rule 46    While -> while checkCondition program
+Rule 47    checkCondition -> L_BRACES exp R_BRACES
+Rule 48    Operand -> NUMBER
+Rule 49    Operand -> ID
+Rule 50    Operand -> array
+
+Terminals, with rules where they appear
+
+AND                  : 14
+ASSIGN               : 21 26 27
+COLON                : 26 26 27
+COMMA                : 31 40
+DIVIDE               : 19
+EQUALS               : 8
+GREATER_THAN         : 12
+GREATER_THAN_OR_EQUAL_TO : 10
+ID                   : 21 26 27 42 49
+LESSER_THAN          : 13
+LESSER_THAN_OR_EQUAL_TO : 11
+L_BRACES             : 23 40 41 45 47
+MINUS                : 17
+MULTIPLY             : 18
+NOT                  : 25
+NOTEQUALS            : 9
+NUMBER               : 26 26 26 27 27 48
+OR                   : 15
+PLACEHOLDER          : 43
+PLUS                 : 16
+POW                  : 20
+QUOTE                : 40 40 41 41
+R_BRACES             : 23 40 41 45 47
+SEMICOLON            : 21 33 40 41
+SQR_LBRACE           : 28
+SQR_RBRACE           : 28
+else                 : 37 38
+elseif               : 37 39
+end                  : 35
+error                : 
+for                  : 45
+fprintf              : 40 41
+if                   : 36
+while                : 46
+
+Nonterminals, with rules where they appear
+
+Block                : 36 39
+Declaration          : 2
+End                  : 4 5 6
+For                  : 4
+Fprintf              : 3
+If                   : 6
+Operand              : 24 31 32 33 34
+Operator             : 22
+While                : 5
+array                : 50
+checkCondition       : 36 37 39 46
+colvector            : 30 33
+content              : 40 41 42 43
+exp                  : 21 22 22 23 25 40 47
+forCondition         : 45
+main                 : 0
+program              : 1 2 3 4 5 6 36 37 37 38 39 45 46
+rowvector            : 29 31
+vector               : 28
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . main
+    (1) main -> . program
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+    $end            reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+    main                           shift and go to state 1
+    program                        shift and go to state 2
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 1
+
+    (0) S' -> main .
+
+
+
+state 2
+
+    (1) main -> program .
+
+    $end            reduce using rule 1 (main -> program .)
+
+
+state 3
+
+    (2) program -> Declaration . program
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for fprintf resolved as shift
+  ! shift/reduce conflict for for resolved as shift
+  ! shift/reduce conflict for while resolved as shift
+  ! shift/reduce conflict for if resolved as shift
+    $end            reduce using rule 7 (program -> .)
+    end             reduce using rule 7 (program -> .)
+    elseif          reduce using rule 7 (program -> .)
+    else            reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+  ! ID              [ reduce using rule 7 (program -> .) ]
+  ! fprintf         [ reduce using rule 7 (program -> .) ]
+  ! for             [ reduce using rule 7 (program -> .) ]
+  ! while           [ reduce using rule 7 (program -> .) ]
+  ! if              [ reduce using rule 7 (program -> .) ]
+
+    Declaration                    shift and go to state 3
+    program                        shift and go to state 13
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 4
+
+    (3) program -> Fprintf . program
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for fprintf resolved as shift
+  ! shift/reduce conflict for for resolved as shift
+  ! shift/reduce conflict for while resolved as shift
+  ! shift/reduce conflict for if resolved as shift
+    $end            reduce using rule 7 (program -> .)
+    end             reduce using rule 7 (program -> .)
+    elseif          reduce using rule 7 (program -> .)
+    else            reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+  ! ID              [ reduce using rule 7 (program -> .) ]
+  ! fprintf         [ reduce using rule 7 (program -> .) ]
+  ! for             [ reduce using rule 7 (program -> .) ]
+  ! while           [ reduce using rule 7 (program -> .) ]
+  ! if              [ reduce using rule 7 (program -> .) ]
+
+    Fprintf                        shift and go to state 4
+    program                        shift and go to state 14
+    Declaration                    shift and go to state 3
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 5
+
+    (4) program -> For . program End
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+    end             reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+    For                            shift and go to state 5
+    program                        shift and go to state 15
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 6
+
+    (5) program -> While . program End
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+    end             reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+    While                          shift and go to state 6
+    program                        shift and go to state 16
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    If                             shift and go to state 7
+
+state 7
+
+    (6) program -> If . program End
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+    end             reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+    If                             shift and go to state 7
+    program                        shift and go to state 17
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+
+state 8
+
+    (21) Declaration -> ID . ASSIGN exp SEMICOLON
+
+    ASSIGN          shift and go to state 18
+
+
+state 9
+
+    (40) Fprintf -> fprintf . L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> fprintf . L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+
+    L_BRACES        shift and go to state 19
+
+
+state 10
+
+    (45) For -> for . L_BRACES forCondition R_BRACES program
+
+    L_BRACES        shift and go to state 20
+
+
+state 11
+
+    (46) While -> while . checkCondition program
+    (47) checkCondition -> . L_BRACES exp R_BRACES
+
+    L_BRACES        shift and go to state 22
+
+    checkCondition                 shift and go to state 21
+
+state 12
+
+    (36) If -> if . checkCondition program Block
+    (47) checkCondition -> . L_BRACES exp R_BRACES
+
+    L_BRACES        shift and go to state 22
+
+    checkCondition                 shift and go to state 23
+
+state 13
+
+    (2) program -> Declaration program .
+
+    $end            reduce using rule 2 (program -> Declaration program .)
+    end             reduce using rule 2 (program -> Declaration program .)
+    ID              reduce using rule 2 (program -> Declaration program .)
+    fprintf         reduce using rule 2 (program -> Declaration program .)
+    for             reduce using rule 2 (program -> Declaration program .)
+    while           reduce using rule 2 (program -> Declaration program .)
+    if              reduce using rule 2 (program -> Declaration program .)
+    elseif          reduce using rule 2 (program -> Declaration program .)
+    else            reduce using rule 2 (program -> Declaration program .)
+
+
+state 14
+
+    (3) program -> Fprintf program .
+
+    $end            reduce using rule 3 (program -> Fprintf program .)
+    end             reduce using rule 3 (program -> Fprintf program .)
+    ID              reduce using rule 3 (program -> Fprintf program .)
+    fprintf         reduce using rule 3 (program -> Fprintf program .)
+    for             reduce using rule 3 (program -> Fprintf program .)
+    while           reduce using rule 3 (program -> Fprintf program .)
+    if              reduce using rule 3 (program -> Fprintf program .)
+    elseif          reduce using rule 3 (program -> Fprintf program .)
+    else            reduce using rule 3 (program -> Fprintf program .)
+
+
+state 15
+
+    (4) program -> For program . End
+    (35) End -> . end
+
+    end             shift and go to state 25
+
+    End                            shift and go to state 24
+
+state 16
+
+    (5) program -> While program . End
+    (35) End -> . end
+
+    end             shift and go to state 25
+
+    End                            shift and go to state 26
+
+state 17
+
+    (6) program -> If program . End
+    (35) End -> . end
+
+    end             shift and go to state 25
+
+    End                            shift and go to state 27
+
+state 18
+
+    (21) Declaration -> ID ASSIGN . exp SEMICOLON
+    (22) exp -> . exp Operator exp
+    (23) exp -> . L_BRACES exp R_BRACES
+    (24) exp -> . Operand
+    (25) exp -> . NOT exp
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    L_BRACES        shift and go to state 30
+    NOT             shift and go to state 32
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    exp                            shift and go to state 29
+    Operand                        shift and go to state 31
+    array                          shift and go to state 34
+
+state 19
+
+    (40) Fprintf -> fprintf L_BRACES . QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> fprintf L_BRACES . QUOTE content QUOTE R_BRACES SEMICOLON
+
+    QUOTE           shift and go to state 36
+
+
+state 20
+
+    (45) For -> for L_BRACES . forCondition R_BRACES program
+    (26) forCondition -> . ID ASSIGN NUMBER COLON NUMBER COLON NUMBER
+    (27) forCondition -> . ID ASSIGN NUMBER COLON NUMBER
+
+    ID              shift and go to state 38
+
+    forCondition                   shift and go to state 37
+
+state 21
+
+    (46) While -> while checkCondition . program
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for fprintf resolved as shift
+  ! shift/reduce conflict for for resolved as shift
+  ! shift/reduce conflict for while resolved as shift
+  ! shift/reduce conflict for if resolved as shift
+    end             reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+  ! ID              [ reduce using rule 7 (program -> .) ]
+  ! fprintf         [ reduce using rule 7 (program -> .) ]
+  ! for             [ reduce using rule 7 (program -> .) ]
+  ! while           [ reduce using rule 7 (program -> .) ]
+  ! if              [ reduce using rule 7 (program -> .) ]
+
+    program                        shift and go to state 39
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 22
+
+    (47) checkCondition -> L_BRACES . exp R_BRACES
+    (22) exp -> . exp Operator exp
+    (23) exp -> . L_BRACES exp R_BRACES
+    (24) exp -> . Operand
+    (25) exp -> . NOT exp
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    L_BRACES        shift and go to state 30
+    NOT             shift and go to state 32
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    exp                            shift and go to state 40
+    Operand                        shift and go to state 31
+    array                          shift and go to state 34
+
+state 23
+
+    (36) If -> if checkCondition . program Block
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+    elseif          reduce using rule 7 (program -> .)
+    else            reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+    program                        shift and go to state 41
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 24
+
+    (4) program -> For program End .
+
+    $end            reduce using rule 4 (program -> For program End .)
+    end             reduce using rule 4 (program -> For program End .)
+    ID              reduce using rule 4 (program -> For program End .)
+    fprintf         reduce using rule 4 (program -> For program End .)
+    for             reduce using rule 4 (program -> For program End .)
+    while           reduce using rule 4 (program -> For program End .)
+    if              reduce using rule 4 (program -> For program End .)
+    elseif          reduce using rule 4 (program -> For program End .)
+    else            reduce using rule 4 (program -> For program End .)
+
+
+state 25
+
+    (35) End -> end .
+
+    $end            reduce using rule 35 (End -> end .)
+    end             reduce using rule 35 (End -> end .)
+    ID              reduce using rule 35 (End -> end .)
+    fprintf         reduce using rule 35 (End -> end .)
+    for             reduce using rule 35 (End -> end .)
+    while           reduce using rule 35 (End -> end .)
+    if              reduce using rule 35 (End -> end .)
+    elseif          reduce using rule 35 (End -> end .)
+    else            reduce using rule 35 (End -> end .)
+
+
+state 26
+
+    (5) program -> While program End .
+
+    $end            reduce using rule 5 (program -> While program End .)
+    end             reduce using rule 5 (program -> While program End .)
+    ID              reduce using rule 5 (program -> While program End .)
+    fprintf         reduce using rule 5 (program -> While program End .)
+    for             reduce using rule 5 (program -> While program End .)
+    while           reduce using rule 5 (program -> While program End .)
+    if              reduce using rule 5 (program -> While program End .)
+    elseif          reduce using rule 5 (program -> While program End .)
+    else            reduce using rule 5 (program -> While program End .)
+
+
+state 27
+
+    (6) program -> If program End .
+
+    $end            reduce using rule 6 (program -> If program End .)
+    end             reduce using rule 6 (program -> If program End .)
+    ID              reduce using rule 6 (program -> If program End .)
+    fprintf         reduce using rule 6 (program -> If program End .)
+    for             reduce using rule 6 (program -> If program End .)
+    while           reduce using rule 6 (program -> If program End .)
+    if              reduce using rule 6 (program -> If program End .)
+    elseif          reduce using rule 6 (program -> If program End .)
+    else            reduce using rule 6 (program -> If program End .)
+
+
+state 28
+
+    (49) Operand -> ID .
+
+    SEMICOLON       reduce using rule 49 (Operand -> ID .)
+    EQUALS          reduce using rule 49 (Operand -> ID .)
+    NOTEQUALS       reduce using rule 49 (Operand -> ID .)
+    GREATER_THAN_OR_EQUAL_TO reduce using rule 49 (Operand -> ID .)
+    LESSER_THAN_OR_EQUAL_TO reduce using rule 49 (Operand -> ID .)
+    GREATER_THAN    reduce using rule 49 (Operand -> ID .)
+    LESSER_THAN     reduce using rule 49 (Operand -> ID .)
+    AND             reduce using rule 49 (Operand -> ID .)
+    OR              reduce using rule 49 (Operand -> ID .)
+    PLUS            reduce using rule 49 (Operand -> ID .)
+    MINUS           reduce using rule 49 (Operand -> ID .)
+    MULTIPLY        reduce using rule 49 (Operand -> ID .)
+    DIVIDE          reduce using rule 49 (Operand -> ID .)
+    POW             reduce using rule 49 (Operand -> ID .)
+    R_BRACES        reduce using rule 49 (Operand -> ID .)
+    COMMA           reduce using rule 49 (Operand -> ID .)
+    SQR_RBRACE      reduce using rule 49 (Operand -> ID .)
+
+
+state 29
+
+    (21) Declaration -> ID ASSIGN exp . SEMICOLON
+    (22) exp -> exp . Operator exp
+    (8) Operator -> . EQUALS
+    (9) Operator -> . NOTEQUALS
+    (10) Operator -> . GREATER_THAN_OR_EQUAL_TO
+    (11) Operator -> . LESSER_THAN_OR_EQUAL_TO
+    (12) Operator -> . GREATER_THAN
+    (13) Operator -> . LESSER_THAN
+    (14) Operator -> . AND
+    (15) Operator -> . OR
+    (16) Operator -> . PLUS
+    (17) Operator -> . MINUS
+    (18) Operator -> . MULTIPLY
+    (19) Operator -> . DIVIDE
+    (20) Operator -> . POW
+
+    SEMICOLON       shift and go to state 42
+    EQUALS          shift and go to state 44
+    NOTEQUALS       shift and go to state 45
+    GREATER_THAN_OR_EQUAL_TO shift and go to state 46
+    LESSER_THAN_OR_EQUAL_TO shift and go to state 47
+    GREATER_THAN    shift and go to state 48
+    LESSER_THAN     shift and go to state 49
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+    PLUS            shift and go to state 52
+    MINUS           shift and go to state 53
+    MULTIPLY        shift and go to state 54
+    DIVIDE          shift and go to state 55
+    POW             shift and go to state 56
+
+    Operator                       shift and go to state 43
+
+state 30
+
+    (23) exp -> L_BRACES . exp R_BRACES
+    (22) exp -> . exp Operator exp
+    (23) exp -> . L_BRACES exp R_BRACES
+    (24) exp -> . Operand
+    (25) exp -> . NOT exp
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    L_BRACES        shift and go to state 30
+    NOT             shift and go to state 32
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    exp                            shift and go to state 57
+    Operand                        shift and go to state 31
+    array                          shift and go to state 34
+
+state 31
+
+    (24) exp -> Operand .
+
+    SEMICOLON       reduce using rule 24 (exp -> Operand .)
+    EQUALS          reduce using rule 24 (exp -> Operand .)
+    NOTEQUALS       reduce using rule 24 (exp -> Operand .)
+    GREATER_THAN_OR_EQUAL_TO reduce using rule 24 (exp -> Operand .)
+    LESSER_THAN_OR_EQUAL_TO reduce using rule 24 (exp -> Operand .)
+    GREATER_THAN    reduce using rule 24 (exp -> Operand .)
+    LESSER_THAN     reduce using rule 24 (exp -> Operand .)
+    AND             reduce using rule 24 (exp -> Operand .)
+    OR              reduce using rule 24 (exp -> Operand .)
+    PLUS            reduce using rule 24 (exp -> Operand .)
+    MINUS           reduce using rule 24 (exp -> Operand .)
+    MULTIPLY        reduce using rule 24 (exp -> Operand .)
+    DIVIDE          reduce using rule 24 (exp -> Operand .)
+    POW             reduce using rule 24 (exp -> Operand .)
+    R_BRACES        reduce using rule 24 (exp -> Operand .)
+
+
+state 32
+
+    (25) exp -> NOT . exp
+    (22) exp -> . exp Operator exp
+    (23) exp -> . L_BRACES exp R_BRACES
+    (24) exp -> . Operand
+    (25) exp -> . NOT exp
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    L_BRACES        shift and go to state 30
+    NOT             shift and go to state 32
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    exp                            shift and go to state 58
+    Operand                        shift and go to state 31
+    array                          shift and go to state 34
+
+state 33
+
+    (48) Operand -> NUMBER .
+
+    SEMICOLON       reduce using rule 48 (Operand -> NUMBER .)
+    EQUALS          reduce using rule 48 (Operand -> NUMBER .)
+    NOTEQUALS       reduce using rule 48 (Operand -> NUMBER .)
+    GREATER_THAN_OR_EQUAL_TO reduce using rule 48 (Operand -> NUMBER .)
+    LESSER_THAN_OR_EQUAL_TO reduce using rule 48 (Operand -> NUMBER .)
+    GREATER_THAN    reduce using rule 48 (Operand -> NUMBER .)
+    LESSER_THAN     reduce using rule 48 (Operand -> NUMBER .)
+    AND             reduce using rule 48 (Operand -> NUMBER .)
+    OR              reduce using rule 48 (Operand -> NUMBER .)
+    PLUS            reduce using rule 48 (Operand -> NUMBER .)
+    MINUS           reduce using rule 48 (Operand -> NUMBER .)
+    MULTIPLY        reduce using rule 48 (Operand -> NUMBER .)
+    DIVIDE          reduce using rule 48 (Operand -> NUMBER .)
+    POW             reduce using rule 48 (Operand -> NUMBER .)
+    R_BRACES        reduce using rule 48 (Operand -> NUMBER .)
+    COMMA           reduce using rule 48 (Operand -> NUMBER .)
+    SQR_RBRACE      reduce using rule 48 (Operand -> NUMBER .)
+
+
+state 34
+
+    (50) Operand -> array .
+
+    SEMICOLON       reduce using rule 50 (Operand -> array .)
+    EQUALS          reduce using rule 50 (Operand -> array .)
+    NOTEQUALS       reduce using rule 50 (Operand -> array .)
+    GREATER_THAN_OR_EQUAL_TO reduce using rule 50 (Operand -> array .)
+    LESSER_THAN_OR_EQUAL_TO reduce using rule 50 (Operand -> array .)
+    GREATER_THAN    reduce using rule 50 (Operand -> array .)
+    LESSER_THAN     reduce using rule 50 (Operand -> array .)
+    AND             reduce using rule 50 (Operand -> array .)
+    OR              reduce using rule 50 (Operand -> array .)
+    PLUS            reduce using rule 50 (Operand -> array .)
+    MINUS           reduce using rule 50 (Operand -> array .)
+    MULTIPLY        reduce using rule 50 (Operand -> array .)
+    DIVIDE          reduce using rule 50 (Operand -> array .)
+    POW             reduce using rule 50 (Operand -> array .)
+    R_BRACES        reduce using rule 50 (Operand -> array .)
+    COMMA           reduce using rule 50 (Operand -> array .)
+    SQR_RBRACE      reduce using rule 50 (Operand -> array .)
+
+
+state 35
+
+    (28) array -> SQR_LBRACE . vector SQR_RBRACE
+    (29) vector -> . rowvector
+    (30) vector -> . colvector
+    (31) rowvector -> . Operand COMMA rowvector
+    (32) rowvector -> . Operand
+    (33) colvector -> . Operand SEMICOLON colvector
+    (34) colvector -> . Operand
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    vector                         shift and go to state 59
+    rowvector                      shift and go to state 60
+    colvector                      shift and go to state 61
+    Operand                        shift and go to state 62
+    array                          shift and go to state 34
+
+state 36
+
+    (40) Fprintf -> fprintf L_BRACES QUOTE . content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> fprintf L_BRACES QUOTE . content QUOTE R_BRACES SEMICOLON
+    (42) content -> . ID content
+    (43) content -> . PLACEHOLDER content
+    (44) content -> .
+
+    ID              shift and go to state 64
+    PLACEHOLDER     shift and go to state 65
+    QUOTE           reduce using rule 44 (content -> .)
+
+    content                        shift and go to state 63
+
+state 37
+
+    (45) For -> for L_BRACES forCondition . R_BRACES program
+
+    R_BRACES        shift and go to state 66
+
+
+state 38
+
+    (26) forCondition -> ID . ASSIGN NUMBER COLON NUMBER COLON NUMBER
+    (27) forCondition -> ID . ASSIGN NUMBER COLON NUMBER
+
+    ASSIGN          shift and go to state 67
+
+
+state 39
+
+    (46) While -> while checkCondition program .
+
+    ID              reduce using rule 46 (While -> while checkCondition program .)
+    fprintf         reduce using rule 46 (While -> while checkCondition program .)
+    for             reduce using rule 46 (While -> while checkCondition program .)
+    while           reduce using rule 46 (While -> while checkCondition program .)
+    if              reduce using rule 46 (While -> while checkCondition program .)
+    end             reduce using rule 46 (While -> while checkCondition program .)
+
+
+state 40
+
+    (47) checkCondition -> L_BRACES exp . R_BRACES
+    (22) exp -> exp . Operator exp
+    (8) Operator -> . EQUALS
+    (9) Operator -> . NOTEQUALS
+    (10) Operator -> . GREATER_THAN_OR_EQUAL_TO
+    (11) Operator -> . LESSER_THAN_OR_EQUAL_TO
+    (12) Operator -> . GREATER_THAN
+    (13) Operator -> . LESSER_THAN
+    (14) Operator -> . AND
+    (15) Operator -> . OR
+    (16) Operator -> . PLUS
+    (17) Operator -> . MINUS
+    (18) Operator -> . MULTIPLY
+    (19) Operator -> . DIVIDE
+    (20) Operator -> . POW
+
+    R_BRACES        shift and go to state 68
+    EQUALS          shift and go to state 44
+    NOTEQUALS       shift and go to state 45
+    GREATER_THAN_OR_EQUAL_TO shift and go to state 46
+    LESSER_THAN_OR_EQUAL_TO shift and go to state 47
+    GREATER_THAN    shift and go to state 48
+    LESSER_THAN     shift and go to state 49
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+    PLUS            shift and go to state 52
+    MINUS           shift and go to state 53
+    MULTIPLY        shift and go to state 54
+    DIVIDE          shift and go to state 55
+    POW             shift and go to state 56
+
+    Operator                       shift and go to state 43
+
+state 41
+
+    (36) If -> if checkCondition program . Block
+    (37) Block -> . elseif checkCondition program else program
+    (38) Block -> . else program
+    (39) Block -> . elseif checkCondition program Block
+
+    elseif          shift and go to state 70
+    else            shift and go to state 71
+
+    Block                          shift and go to state 69
+
+state 42
+
+    (21) Declaration -> ID ASSIGN exp SEMICOLON .
+
+    ID              reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    fprintf         reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    for             reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    while           reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    if              reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    $end            reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    end             reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    elseif          reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+    else            reduce using rule 21 (Declaration -> ID ASSIGN exp SEMICOLON .)
+
+
+state 43
+
+    (22) exp -> exp Operator . exp
+    (22) exp -> . exp Operator exp
+    (23) exp -> . L_BRACES exp R_BRACES
+    (24) exp -> . Operand
+    (25) exp -> . NOT exp
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    L_BRACES        shift and go to state 30
+    NOT             shift and go to state 32
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    exp                            shift and go to state 72
+    Operand                        shift and go to state 31
+    array                          shift and go to state 34
+
+state 44
+
+    (8) Operator -> EQUALS .
+
+    L_BRACES        reduce using rule 8 (Operator -> EQUALS .)
+    NOT             reduce using rule 8 (Operator -> EQUALS .)
+    NUMBER          reduce using rule 8 (Operator -> EQUALS .)
+    ID              reduce using rule 8 (Operator -> EQUALS .)
+    SQR_LBRACE      reduce using rule 8 (Operator -> EQUALS .)
+
+
+state 45
+
+    (9) Operator -> NOTEQUALS .
+
+    L_BRACES        reduce using rule 9 (Operator -> NOTEQUALS .)
+    NOT             reduce using rule 9 (Operator -> NOTEQUALS .)
+    NUMBER          reduce using rule 9 (Operator -> NOTEQUALS .)
+    ID              reduce using rule 9 (Operator -> NOTEQUALS .)
+    SQR_LBRACE      reduce using rule 9 (Operator -> NOTEQUALS .)
+
+
+state 46
+
+    (10) Operator -> GREATER_THAN_OR_EQUAL_TO .
+
+    L_BRACES        reduce using rule 10 (Operator -> GREATER_THAN_OR_EQUAL_TO .)
+    NOT             reduce using rule 10 (Operator -> GREATER_THAN_OR_EQUAL_TO .)
+    NUMBER          reduce using rule 10 (Operator -> GREATER_THAN_OR_EQUAL_TO .)
+    ID              reduce using rule 10 (Operator -> GREATER_THAN_OR_EQUAL_TO .)
+    SQR_LBRACE      reduce using rule 10 (Operator -> GREATER_THAN_OR_EQUAL_TO .)
+
+
+state 47
+
+    (11) Operator -> LESSER_THAN_OR_EQUAL_TO .
+
+    L_BRACES        reduce using rule 11 (Operator -> LESSER_THAN_OR_EQUAL_TO .)
+    NOT             reduce using rule 11 (Operator -> LESSER_THAN_OR_EQUAL_TO .)
+    NUMBER          reduce using rule 11 (Operator -> LESSER_THAN_OR_EQUAL_TO .)
+    ID              reduce using rule 11 (Operator -> LESSER_THAN_OR_EQUAL_TO .)
+    SQR_LBRACE      reduce using rule 11 (Operator -> LESSER_THAN_OR_EQUAL_TO .)
+
+
+state 48
+
+    (12) Operator -> GREATER_THAN .
+
+    L_BRACES        reduce using rule 12 (Operator -> GREATER_THAN .)
+    NOT             reduce using rule 12 (Operator -> GREATER_THAN .)
+    NUMBER          reduce using rule 12 (Operator -> GREATER_THAN .)
+    ID              reduce using rule 12 (Operator -> GREATER_THAN .)
+    SQR_LBRACE      reduce using rule 12 (Operator -> GREATER_THAN .)
+
+
+state 49
+
+    (13) Operator -> LESSER_THAN .
+
+    L_BRACES        reduce using rule 13 (Operator -> LESSER_THAN .)
+    NOT             reduce using rule 13 (Operator -> LESSER_THAN .)
+    NUMBER          reduce using rule 13 (Operator -> LESSER_THAN .)
+    ID              reduce using rule 13 (Operator -> LESSER_THAN .)
+    SQR_LBRACE      reduce using rule 13 (Operator -> LESSER_THAN .)
+
+
+state 50
+
+    (14) Operator -> AND .
+
+    L_BRACES        reduce using rule 14 (Operator -> AND .)
+    NOT             reduce using rule 14 (Operator -> AND .)
+    NUMBER          reduce using rule 14 (Operator -> AND .)
+    ID              reduce using rule 14 (Operator -> AND .)
+    SQR_LBRACE      reduce using rule 14 (Operator -> AND .)
+
+
+state 51
+
+    (15) Operator -> OR .
+
+    L_BRACES        reduce using rule 15 (Operator -> OR .)
+    NOT             reduce using rule 15 (Operator -> OR .)
+    NUMBER          reduce using rule 15 (Operator -> OR .)
+    ID              reduce using rule 15 (Operator -> OR .)
+    SQR_LBRACE      reduce using rule 15 (Operator -> OR .)
+
+
+state 52
+
+    (16) Operator -> PLUS .
+
+    L_BRACES        reduce using rule 16 (Operator -> PLUS .)
+    NOT             reduce using rule 16 (Operator -> PLUS .)
+    NUMBER          reduce using rule 16 (Operator -> PLUS .)
+    ID              reduce using rule 16 (Operator -> PLUS .)
+    SQR_LBRACE      reduce using rule 16 (Operator -> PLUS .)
+
+
+state 53
+
+    (17) Operator -> MINUS .
+
+    L_BRACES        reduce using rule 17 (Operator -> MINUS .)
+    NOT             reduce using rule 17 (Operator -> MINUS .)
+    NUMBER          reduce using rule 17 (Operator -> MINUS .)
+    ID              reduce using rule 17 (Operator -> MINUS .)
+    SQR_LBRACE      reduce using rule 17 (Operator -> MINUS .)
+
+
+state 54
+
+    (18) Operator -> MULTIPLY .
+
+    L_BRACES        reduce using rule 18 (Operator -> MULTIPLY .)
+    NOT             reduce using rule 18 (Operator -> MULTIPLY .)
+    NUMBER          reduce using rule 18 (Operator -> MULTIPLY .)
+    ID              reduce using rule 18 (Operator -> MULTIPLY .)
+    SQR_LBRACE      reduce using rule 18 (Operator -> MULTIPLY .)
+
+
+state 55
+
+    (19) Operator -> DIVIDE .
+
+    L_BRACES        reduce using rule 19 (Operator -> DIVIDE .)
+    NOT             reduce using rule 19 (Operator -> DIVIDE .)
+    NUMBER          reduce using rule 19 (Operator -> DIVIDE .)
+    ID              reduce using rule 19 (Operator -> DIVIDE .)
+    SQR_LBRACE      reduce using rule 19 (Operator -> DIVIDE .)
+
+
+state 56
+
+    (20) Operator -> POW .
+
+    L_BRACES        reduce using rule 20 (Operator -> POW .)
+    NOT             reduce using rule 20 (Operator -> POW .)
+    NUMBER          reduce using rule 20 (Operator -> POW .)
+    ID              reduce using rule 20 (Operator -> POW .)
+    SQR_LBRACE      reduce using rule 20 (Operator -> POW .)
+
+
+state 57
+
+    (23) exp -> L_BRACES exp . R_BRACES
+    (22) exp -> exp . Operator exp
+    (8) Operator -> . EQUALS
+    (9) Operator -> . NOTEQUALS
+    (10) Operator -> . GREATER_THAN_OR_EQUAL_TO
+    (11) Operator -> . LESSER_THAN_OR_EQUAL_TO
+    (12) Operator -> . GREATER_THAN
+    (13) Operator -> . LESSER_THAN
+    (14) Operator -> . AND
+    (15) Operator -> . OR
+    (16) Operator -> . PLUS
+    (17) Operator -> . MINUS
+    (18) Operator -> . MULTIPLY
+    (19) Operator -> . DIVIDE
+    (20) Operator -> . POW
+
+    R_BRACES        shift and go to state 73
+    EQUALS          shift and go to state 44
+    NOTEQUALS       shift and go to state 45
+    GREATER_THAN_OR_EQUAL_TO shift and go to state 46
+    LESSER_THAN_OR_EQUAL_TO shift and go to state 47
+    GREATER_THAN    shift and go to state 48
+    LESSER_THAN     shift and go to state 49
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+    PLUS            shift and go to state 52
+    MINUS           shift and go to state 53
+    MULTIPLY        shift and go to state 54
+    DIVIDE          shift and go to state 55
+    POW             shift and go to state 56
+
+    Operator                       shift and go to state 43
+
+state 58
+
+    (25) exp -> NOT exp .
+    (22) exp -> exp . Operator exp
+    (8) Operator -> . EQUALS
+    (9) Operator -> . NOTEQUALS
+    (10) Operator -> . GREATER_THAN_OR_EQUAL_TO
+    (11) Operator -> . LESSER_THAN_OR_EQUAL_TO
+    (12) Operator -> . GREATER_THAN
+    (13) Operator -> . LESSER_THAN
+    (14) Operator -> . AND
+    (15) Operator -> . OR
+    (16) Operator -> . PLUS
+    (17) Operator -> . MINUS
+    (18) Operator -> . MULTIPLY
+    (19) Operator -> . DIVIDE
+    (20) Operator -> . POW
+
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for NOTEQUALS resolved as shift
+  ! shift/reduce conflict for GREATER_THAN_OR_EQUAL_TO resolved as shift
+  ! shift/reduce conflict for LESSER_THAN_OR_EQUAL_TO resolved as shift
+  ! shift/reduce conflict for GREATER_THAN resolved as shift
+  ! shift/reduce conflict for LESSER_THAN resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MULTIPLY resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for POW resolved as shift
+    SEMICOLON       reduce using rule 25 (exp -> NOT exp .)
+    R_BRACES        reduce using rule 25 (exp -> NOT exp .)
+    EQUALS          shift and go to state 44
+    NOTEQUALS       shift and go to state 45
+    GREATER_THAN_OR_EQUAL_TO shift and go to state 46
+    LESSER_THAN_OR_EQUAL_TO shift and go to state 47
+    GREATER_THAN    shift and go to state 48
+    LESSER_THAN     shift and go to state 49
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+    PLUS            shift and go to state 52
+    MINUS           shift and go to state 53
+    MULTIPLY        shift and go to state 54
+    DIVIDE          shift and go to state 55
+    POW             shift and go to state 56
+
+  ! EQUALS          [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! NOTEQUALS       [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! GREATER_THAN_OR_EQUAL_TO [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! LESSER_THAN_OR_EQUAL_TO [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! GREATER_THAN    [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! LESSER_THAN     [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! AND             [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! OR              [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! PLUS            [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! MINUS           [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! MULTIPLY        [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! DIVIDE          [ reduce using rule 25 (exp -> NOT exp .) ]
+  ! POW             [ reduce using rule 25 (exp -> NOT exp .) ]
+
+    Operator                       shift and go to state 43
+
+state 59
+
+    (28) array -> SQR_LBRACE vector . SQR_RBRACE
+
+    SQR_RBRACE      shift and go to state 74
+
+
+state 60
+
+    (29) vector -> rowvector .
+
+    SQR_RBRACE      reduce using rule 29 (vector -> rowvector .)
+
+
+state 61
+
+    (30) vector -> colvector .
+
+    SQR_RBRACE      reduce using rule 30 (vector -> colvector .)
+
+
+state 62
+
+    (31) rowvector -> Operand . COMMA rowvector
+    (32) rowvector -> Operand .
+    (33) colvector -> Operand . SEMICOLON colvector
+    (34) colvector -> Operand .
+
+  ! reduce/reduce conflict for SQR_RBRACE resolved using rule 32 (rowvector -> Operand .)
+    COMMA           shift and go to state 75
+    SQR_RBRACE      reduce using rule 32 (rowvector -> Operand .)
+    SEMICOLON       shift and go to state 76
+
+  ! SQR_RBRACE      [ reduce using rule 34 (colvector -> Operand .) ]
+
+
+state 63
+
+    (40) Fprintf -> fprintf L_BRACES QUOTE content . QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> fprintf L_BRACES QUOTE content . QUOTE R_BRACES SEMICOLON
+
+    QUOTE           shift and go to state 77
+
+
+state 64
+
+    (42) content -> ID . content
+    (42) content -> . ID content
+    (43) content -> . PLACEHOLDER content
+    (44) content -> .
+
+    ID              shift and go to state 64
+    PLACEHOLDER     shift and go to state 65
+    QUOTE           reduce using rule 44 (content -> .)
+
+    content                        shift and go to state 78
+
+state 65
+
+    (43) content -> PLACEHOLDER . content
+    (42) content -> . ID content
+    (43) content -> . PLACEHOLDER content
+    (44) content -> .
+
+    ID              shift and go to state 64
+    PLACEHOLDER     shift and go to state 65
+    QUOTE           reduce using rule 44 (content -> .)
+
+    content                        shift and go to state 79
+
+state 66
+
+    (45) For -> for L_BRACES forCondition R_BRACES . program
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for fprintf resolved as shift
+  ! shift/reduce conflict for for resolved as shift
+  ! shift/reduce conflict for while resolved as shift
+  ! shift/reduce conflict for if resolved as shift
+    end             reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+  ! ID              [ reduce using rule 7 (program -> .) ]
+  ! fprintf         [ reduce using rule 7 (program -> .) ]
+  ! for             [ reduce using rule 7 (program -> .) ]
+  ! while           [ reduce using rule 7 (program -> .) ]
+  ! if              [ reduce using rule 7 (program -> .) ]
+
+    program                        shift and go to state 80
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 67
+
+    (26) forCondition -> ID ASSIGN . NUMBER COLON NUMBER COLON NUMBER
+    (27) forCondition -> ID ASSIGN . NUMBER COLON NUMBER
+
+    NUMBER          shift and go to state 81
+
+
+state 68
+
+    (47) checkCondition -> L_BRACES exp R_BRACES .
+
+    ID              reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+    fprintf         reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+    for             reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+    while           reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+    if              reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+    end             reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+    elseif          reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+    else            reduce using rule 47 (checkCondition -> L_BRACES exp R_BRACES .)
+
+
+state 69
+
+    (36) If -> if checkCondition program Block .
+
+    ID              reduce using rule 36 (If -> if checkCondition program Block .)
+    fprintf         reduce using rule 36 (If -> if checkCondition program Block .)
+    for             reduce using rule 36 (If -> if checkCondition program Block .)
+    while           reduce using rule 36 (If -> if checkCondition program Block .)
+    if              reduce using rule 36 (If -> if checkCondition program Block .)
+    end             reduce using rule 36 (If -> if checkCondition program Block .)
+
+
+state 70
+
+    (37) Block -> elseif . checkCondition program else program
+    (39) Block -> elseif . checkCondition program Block
+    (47) checkCondition -> . L_BRACES exp R_BRACES
+
+    L_BRACES        shift and go to state 22
+
+    checkCondition                 shift and go to state 82
+
+state 71
+
+    (38) Block -> else . program
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for fprintf resolved as shift
+  ! shift/reduce conflict for for resolved as shift
+  ! shift/reduce conflict for while resolved as shift
+  ! shift/reduce conflict for if resolved as shift
+    end             reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+  ! ID              [ reduce using rule 7 (program -> .) ]
+  ! fprintf         [ reduce using rule 7 (program -> .) ]
+  ! for             [ reduce using rule 7 (program -> .) ]
+  ! while           [ reduce using rule 7 (program -> .) ]
+  ! if              [ reduce using rule 7 (program -> .) ]
+
+    program                        shift and go to state 83
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 72
+
+    (22) exp -> exp Operator exp .
+    (22) exp -> exp . Operator exp
+    (8) Operator -> . EQUALS
+    (9) Operator -> . NOTEQUALS
+    (10) Operator -> . GREATER_THAN_OR_EQUAL_TO
+    (11) Operator -> . LESSER_THAN_OR_EQUAL_TO
+    (12) Operator -> . GREATER_THAN
+    (13) Operator -> . LESSER_THAN
+    (14) Operator -> . AND
+    (15) Operator -> . OR
+    (16) Operator -> . PLUS
+    (17) Operator -> . MINUS
+    (18) Operator -> . MULTIPLY
+    (19) Operator -> . DIVIDE
+    (20) Operator -> . POW
+
+  ! shift/reduce conflict for EQUALS resolved as shift
+  ! shift/reduce conflict for NOTEQUALS resolved as shift
+  ! shift/reduce conflict for GREATER_THAN_OR_EQUAL_TO resolved as shift
+  ! shift/reduce conflict for LESSER_THAN_OR_EQUAL_TO resolved as shift
+  ! shift/reduce conflict for GREATER_THAN resolved as shift
+  ! shift/reduce conflict for LESSER_THAN resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MULTIPLY resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for POW resolved as shift
+    SEMICOLON       reduce using rule 22 (exp -> exp Operator exp .)
+    R_BRACES        reduce using rule 22 (exp -> exp Operator exp .)
+    EQUALS          shift and go to state 44
+    NOTEQUALS       shift and go to state 45
+    GREATER_THAN_OR_EQUAL_TO shift and go to state 46
+    LESSER_THAN_OR_EQUAL_TO shift and go to state 47
+    GREATER_THAN    shift and go to state 48
+    LESSER_THAN     shift and go to state 49
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+    PLUS            shift and go to state 52
+    MINUS           shift and go to state 53
+    MULTIPLY        shift and go to state 54
+    DIVIDE          shift and go to state 55
+    POW             shift and go to state 56
+
+  ! EQUALS          [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! NOTEQUALS       [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! GREATER_THAN_OR_EQUAL_TO [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! LESSER_THAN_OR_EQUAL_TO [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! GREATER_THAN    [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! LESSER_THAN     [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! AND             [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! OR              [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! PLUS            [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! MINUS           [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! MULTIPLY        [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! DIVIDE          [ reduce using rule 22 (exp -> exp Operator exp .) ]
+  ! POW             [ reduce using rule 22 (exp -> exp Operator exp .) ]
+
+    Operator                       shift and go to state 43
+
+state 73
+
+    (23) exp -> L_BRACES exp R_BRACES .
+
+    SEMICOLON       reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    EQUALS          reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    NOTEQUALS       reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    GREATER_THAN_OR_EQUAL_TO reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    LESSER_THAN_OR_EQUAL_TO reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    GREATER_THAN    reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    LESSER_THAN     reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    AND             reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    OR              reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    PLUS            reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    MINUS           reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    MULTIPLY        reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    DIVIDE          reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    POW             reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+    R_BRACES        reduce using rule 23 (exp -> L_BRACES exp R_BRACES .)
+
+
+state 74
+
+    (28) array -> SQR_LBRACE vector SQR_RBRACE .
+
+    SEMICOLON       reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    EQUALS          reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    NOTEQUALS       reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    GREATER_THAN_OR_EQUAL_TO reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    LESSER_THAN_OR_EQUAL_TO reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    GREATER_THAN    reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    LESSER_THAN     reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    AND             reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    OR              reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    PLUS            reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    MINUS           reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    MULTIPLY        reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    DIVIDE          reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    POW             reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    R_BRACES        reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    COMMA           reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+    SQR_RBRACE      reduce using rule 28 (array -> SQR_LBRACE vector SQR_RBRACE .)
+
+
+state 75
+
+    (31) rowvector -> Operand COMMA . rowvector
+    (31) rowvector -> . Operand COMMA rowvector
+    (32) rowvector -> . Operand
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    Operand                        shift and go to state 84
+    rowvector                      shift and go to state 85
+    array                          shift and go to state 34
+
+state 76
+
+    (33) colvector -> Operand SEMICOLON . colvector
+    (33) colvector -> . Operand SEMICOLON colvector
+    (34) colvector -> . Operand
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    Operand                        shift and go to state 86
+    colvector                      shift and go to state 87
+    array                          shift and go to state 34
+
+state 77
+
+    (40) Fprintf -> fprintf L_BRACES QUOTE content QUOTE . COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> fprintf L_BRACES QUOTE content QUOTE . R_BRACES SEMICOLON
+
+    COMMA           shift and go to state 88
+    R_BRACES        shift and go to state 89
+
+
+state 78
+
+    (42) content -> ID content .
+
+    QUOTE           reduce using rule 42 (content -> ID content .)
+
+
+state 79
+
+    (43) content -> PLACEHOLDER content .
+
+    QUOTE           reduce using rule 43 (content -> PLACEHOLDER content .)
+
+
+state 80
+
+    (45) For -> for L_BRACES forCondition R_BRACES program .
+
+    ID              reduce using rule 45 (For -> for L_BRACES forCondition R_BRACES program .)
+    fprintf         reduce using rule 45 (For -> for L_BRACES forCondition R_BRACES program .)
+    for             reduce using rule 45 (For -> for L_BRACES forCondition R_BRACES program .)
+    while           reduce using rule 45 (For -> for L_BRACES forCondition R_BRACES program .)
+    if              reduce using rule 45 (For -> for L_BRACES forCondition R_BRACES program .)
+    end             reduce using rule 45 (For -> for L_BRACES forCondition R_BRACES program .)
+
+
+state 81
+
+    (26) forCondition -> ID ASSIGN NUMBER . COLON NUMBER COLON NUMBER
+    (27) forCondition -> ID ASSIGN NUMBER . COLON NUMBER
+
+    COLON           shift and go to state 90
+
+
+state 82
+
+    (37) Block -> elseif checkCondition . program else program
+    (39) Block -> elseif checkCondition . program Block
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+    else            reduce using rule 7 (program -> .)
+    elseif          reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+    program                        shift and go to state 91
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 83
+
+    (38) Block -> else program .
+
+    ID              reduce using rule 38 (Block -> else program .)
+    fprintf         reduce using rule 38 (Block -> else program .)
+    for             reduce using rule 38 (Block -> else program .)
+    while           reduce using rule 38 (Block -> else program .)
+    if              reduce using rule 38 (Block -> else program .)
+    end             reduce using rule 38 (Block -> else program .)
+
+
+state 84
+
+    (31) rowvector -> Operand . COMMA rowvector
+    (32) rowvector -> Operand .
+
+    COMMA           shift and go to state 75
+    SQR_RBRACE      reduce using rule 32 (rowvector -> Operand .)
+
+
+state 85
+
+    (31) rowvector -> Operand COMMA rowvector .
+
+    SQR_RBRACE      reduce using rule 31 (rowvector -> Operand COMMA rowvector .)
+
+
+state 86
+
+    (33) colvector -> Operand . SEMICOLON colvector
+    (34) colvector -> Operand .
+
+    SEMICOLON       shift and go to state 76
+    SQR_RBRACE      reduce using rule 34 (colvector -> Operand .)
+
+
+state 87
+
+    (33) colvector -> Operand SEMICOLON colvector .
+
+    SQR_RBRACE      reduce using rule 33 (colvector -> Operand SEMICOLON colvector .)
+
+
+state 88
+
+    (40) Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA . exp R_BRACES SEMICOLON
+    (22) exp -> . exp Operator exp
+    (23) exp -> . L_BRACES exp R_BRACES
+    (24) exp -> . Operand
+    (25) exp -> . NOT exp
+    (48) Operand -> . NUMBER
+    (49) Operand -> . ID
+    (50) Operand -> . array
+    (28) array -> . SQR_LBRACE vector SQR_RBRACE
+
+    L_BRACES        shift and go to state 30
+    NOT             shift and go to state 32
+    NUMBER          shift and go to state 33
+    ID              shift and go to state 28
+    SQR_LBRACE      shift and go to state 35
+
+    exp                            shift and go to state 92
+    Operand                        shift and go to state 31
+    array                          shift and go to state 34
+
+state 89
+
+    (41) Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES . SEMICOLON
+
+    SEMICOLON       shift and go to state 93
+
+
+state 90
+
+    (26) forCondition -> ID ASSIGN NUMBER COLON . NUMBER COLON NUMBER
+    (27) forCondition -> ID ASSIGN NUMBER COLON . NUMBER
+
+    NUMBER          shift and go to state 94
+
+
+state 91
+
+    (37) Block -> elseif checkCondition program . else program
+    (39) Block -> elseif checkCondition program . Block
+    (37) Block -> . elseif checkCondition program else program
+    (38) Block -> . else program
+    (39) Block -> . elseif checkCondition program Block
+
+    else            shift and go to state 95
+    elseif          shift and go to state 70
+
+    Block                          shift and go to state 96
+
+state 92
+
+    (40) Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp . R_BRACES SEMICOLON
+    (22) exp -> exp . Operator exp
+    (8) Operator -> . EQUALS
+    (9) Operator -> . NOTEQUALS
+    (10) Operator -> . GREATER_THAN_OR_EQUAL_TO
+    (11) Operator -> . LESSER_THAN_OR_EQUAL_TO
+    (12) Operator -> . GREATER_THAN
+    (13) Operator -> . LESSER_THAN
+    (14) Operator -> . AND
+    (15) Operator -> . OR
+    (16) Operator -> . PLUS
+    (17) Operator -> . MINUS
+    (18) Operator -> . MULTIPLY
+    (19) Operator -> . DIVIDE
+    (20) Operator -> . POW
+
+    R_BRACES        shift and go to state 97
+    EQUALS          shift and go to state 44
+    NOTEQUALS       shift and go to state 45
+    GREATER_THAN_OR_EQUAL_TO shift and go to state 46
+    LESSER_THAN_OR_EQUAL_TO shift and go to state 47
+    GREATER_THAN    shift and go to state 48
+    LESSER_THAN     shift and go to state 49
+    AND             shift and go to state 50
+    OR              shift and go to state 51
+    PLUS            shift and go to state 52
+    MINUS           shift and go to state 53
+    MULTIPLY        shift and go to state 54
+    DIVIDE          shift and go to state 55
+    POW             shift and go to state 56
+
+    Operator                       shift and go to state 43
+
+state 93
+
+    (41) Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .
+
+    ID              reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    fprintf         reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    for             reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    while           reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    if              reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    $end            reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    end             reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    elseif          reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+    else            reduce using rule 41 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON .)
+
+
+state 94
+
+    (26) forCondition -> ID ASSIGN NUMBER COLON NUMBER . COLON NUMBER
+    (27) forCondition -> ID ASSIGN NUMBER COLON NUMBER .
+
+    COLON           shift and go to state 98
+    R_BRACES        reduce using rule 27 (forCondition -> ID ASSIGN NUMBER COLON NUMBER .)
+
+
+state 95
+
+    (37) Block -> elseif checkCondition program else . program
+    (38) Block -> else . program
+    (2) program -> . Declaration program
+    (3) program -> . Fprintf program
+    (4) program -> . For program End
+    (5) program -> . While program End
+    (6) program -> . If program End
+    (7) program -> .
+    (21) Declaration -> . ID ASSIGN exp SEMICOLON
+    (40) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON
+    (41) Fprintf -> . fprintf L_BRACES QUOTE content QUOTE R_BRACES SEMICOLON
+    (45) For -> . for L_BRACES forCondition R_BRACES program
+    (46) While -> . while checkCondition program
+    (36) If -> . if checkCondition program Block
+
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for fprintf resolved as shift
+  ! shift/reduce conflict for for resolved as shift
+  ! shift/reduce conflict for while resolved as shift
+  ! shift/reduce conflict for if resolved as shift
+    end             reduce using rule 7 (program -> .)
+    ID              shift and go to state 8
+    fprintf         shift and go to state 9
+    for             shift and go to state 10
+    while           shift and go to state 11
+    if              shift and go to state 12
+
+  ! ID              [ reduce using rule 7 (program -> .) ]
+  ! fprintf         [ reduce using rule 7 (program -> .) ]
+  ! for             [ reduce using rule 7 (program -> .) ]
+  ! while           [ reduce using rule 7 (program -> .) ]
+  ! if              [ reduce using rule 7 (program -> .) ]
+
+    program                        shift and go to state 99
+    Declaration                    shift and go to state 3
+    Fprintf                        shift and go to state 4
+    For                            shift and go to state 5
+    While                          shift and go to state 6
+    If                             shift and go to state 7
+
+state 96
+
+    (39) Block -> elseif checkCondition program Block .
+
+    ID              reduce using rule 39 (Block -> elseif checkCondition program Block .)
+    fprintf         reduce using rule 39 (Block -> elseif checkCondition program Block .)
+    for             reduce using rule 39 (Block -> elseif checkCondition program Block .)
+    while           reduce using rule 39 (Block -> elseif checkCondition program Block .)
+    if              reduce using rule 39 (Block -> elseif checkCondition program Block .)
+    end             reduce using rule 39 (Block -> elseif checkCondition program Block .)
+
+
+state 97
+
+    (40) Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES . SEMICOLON
+
+    SEMICOLON       shift and go to state 100
+
+
+state 98
+
+    (26) forCondition -> ID ASSIGN NUMBER COLON NUMBER COLON . NUMBER
+
+    NUMBER          shift and go to state 101
+
+
+state 99
+
+    (37) Block -> elseif checkCondition program else program .
+    (38) Block -> else program .
+
+  ! reduce/reduce conflict for ID resolved using rule 37 (Block -> elseif checkCondition program else program .)
+  ! reduce/reduce conflict for fprintf resolved using rule 37 (Block -> elseif checkCondition program else program .)
+  ! reduce/reduce conflict for for resolved using rule 37 (Block -> elseif checkCondition program else program .)
+  ! reduce/reduce conflict for while resolved using rule 37 (Block -> elseif checkCondition program else program .)
+  ! reduce/reduce conflict for if resolved using rule 37 (Block -> elseif checkCondition program else program .)
+  ! reduce/reduce conflict for end resolved using rule 37 (Block -> elseif checkCondition program else program .)
+    ID              reduce using rule 37 (Block -> elseif checkCondition program else program .)
+    fprintf         reduce using rule 37 (Block -> elseif checkCondition program else program .)
+    for             reduce using rule 37 (Block -> elseif checkCondition program else program .)
+    while           reduce using rule 37 (Block -> elseif checkCondition program else program .)
+    if              reduce using rule 37 (Block -> elseif checkCondition program else program .)
+    end             reduce using rule 37 (Block -> elseif checkCondition program else program .)
+
+  ! ID              [ reduce using rule 38 (Block -> else program .) ]
+  ! fprintf         [ reduce using rule 38 (Block -> else program .) ]
+  ! for             [ reduce using rule 38 (Block -> else program .) ]
+  ! while           [ reduce using rule 38 (Block -> else program .) ]
+  ! if              [ reduce using rule 38 (Block -> else program .) ]
+  ! end             [ reduce using rule 38 (Block -> else program .) ]
+
+
+state 100
+
+    (40) Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .
+
+    ID              reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    fprintf         reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    for             reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    while           reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    if              reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    $end            reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    end             reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    elseif          reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+    else            reduce using rule 40 (Fprintf -> fprintf L_BRACES QUOTE content QUOTE COMMA exp R_BRACES SEMICOLON .)
+
+
+state 101
+
+    (26) forCondition -> ID ASSIGN NUMBER COLON NUMBER COLON NUMBER .
+
+    R_BRACES        reduce using rule 26 (forCondition -> ID ASSIGN NUMBER COLON NUMBER COLON NUMBER .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ID in state 3 resolved as shift
+WARNING: shift/reduce conflict for fprintf in state 3 resolved as shift
+WARNING: shift/reduce conflict for for in state 3 resolved as shift
+WARNING: shift/reduce conflict for while in state 3 resolved as shift
+WARNING: shift/reduce conflict for if in state 3 resolved as shift
+WARNING: shift/reduce conflict for ID in state 4 resolved as shift
+WARNING: shift/reduce conflict for fprintf in state 4 resolved as shift
+WARNING: shift/reduce conflict for for in state 4 resolved as shift
+WARNING: shift/reduce conflict for while in state 4 resolved as shift
+WARNING: shift/reduce conflict for if in state 4 resolved as shift
+WARNING: shift/reduce conflict for ID in state 21 resolved as shift
+WARNING: shift/reduce conflict for fprintf in state 21 resolved as shift
+WARNING: shift/reduce conflict for for in state 21 resolved as shift
+WARNING: shift/reduce conflict for while in state 21 resolved as shift
+WARNING: shift/reduce conflict for if in state 21 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 58 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 58 resolved as shift
+WARNING: shift/reduce conflict for GREATER_THAN_OR_EQUAL_TO in state 58 resolved as shift
+WARNING: shift/reduce conflict for LESSER_THAN_OR_EQUAL_TO in state 58 resolved as shift
+WARNING: shift/reduce conflict for GREATER_THAN in state 58 resolved as shift
+WARNING: shift/reduce conflict for LESSER_THAN in state 58 resolved as shift
+WARNING: shift/reduce conflict for AND in state 58 resolved as shift
+WARNING: shift/reduce conflict for OR in state 58 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 58 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 58 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLY in state 58 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 58 resolved as shift
+WARNING: shift/reduce conflict for POW in state 58 resolved as shift
+WARNING: shift/reduce conflict for ID in state 66 resolved as shift
+WARNING: shift/reduce conflict for fprintf in state 66 resolved as shift
+WARNING: shift/reduce conflict for for in state 66 resolved as shift
+WARNING: shift/reduce conflict for while in state 66 resolved as shift
+WARNING: shift/reduce conflict for if in state 66 resolved as shift
+WARNING: shift/reduce conflict for ID in state 71 resolved as shift
+WARNING: shift/reduce conflict for fprintf in state 71 resolved as shift
+WARNING: shift/reduce conflict for for in state 71 resolved as shift
+WARNING: shift/reduce conflict for while in state 71 resolved as shift
+WARNING: shift/reduce conflict for if in state 71 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 72 resolved as shift
+WARNING: shift/reduce conflict for NOTEQUALS in state 72 resolved as shift
+WARNING: shift/reduce conflict for GREATER_THAN_OR_EQUAL_TO in state 72 resolved as shift
+WARNING: shift/reduce conflict for LESSER_THAN_OR_EQUAL_TO in state 72 resolved as shift
+WARNING: shift/reduce conflict for GREATER_THAN in state 72 resolved as shift
+WARNING: shift/reduce conflict for LESSER_THAN in state 72 resolved as shift
+WARNING: shift/reduce conflict for AND in state 72 resolved as shift
+WARNING: shift/reduce conflict for OR in state 72 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 72 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 72 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLY in state 72 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 72 resolved as shift
+WARNING: shift/reduce conflict for POW in state 72 resolved as shift
+WARNING: shift/reduce conflict for ID in state 95 resolved as shift
+WARNING: shift/reduce conflict for fprintf in state 95 resolved as shift
+WARNING: shift/reduce conflict for for in state 95 resolved as shift
+WARNING: shift/reduce conflict for while in state 95 resolved as shift
+WARNING: shift/reduce conflict for if in state 95 resolved as shift
+WARNING: reduce/reduce conflict in state 62 resolved using rule (rowvector -> Operand)
+WARNING: rejected rule (colvector -> Operand) in state 62
+WARNING: reduce/reduce conflict in state 99 resolved using rule (Block -> elseif checkCondition program else program)
+WARNING: rejected rule (Block -> else program) in state 99
